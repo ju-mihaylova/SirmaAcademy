@@ -5,6 +5,14 @@ public class CLI {
     private static OrdersManager ordersManager = new OrdersManager();
     private static Scanner scanner = new Scanner(System.in);
 
+    /**
+     * The main method is the entry point to the command-line interface (CLI) that allows the user to interact with the inventory management system.
+     * It initializes the system, displays a menu of options, and handles user input to perform various operations such as adding items,
+     * removing items, displaying the inventory, categorizing items, and placing orders.
+     *
+     * @param args command-line arguments passed to the application. These can be used to configure the initial state of the application
+     *             or to pass in configuration files or other parameters. In this implementation, they are not used.
+     */
     public static void main(String[] args) {
         boolean exit = false;
 
@@ -45,6 +53,9 @@ public class CLI {
         }
     }
 
+    /**
+     * Displays a menu with available options to the user of the inventory management system.
+     */
     private static void displayMenu() {
         System.out.println("Inventory Management System Menu:");
         System.out.println("1. Add Item");
@@ -59,6 +70,9 @@ public class CLI {
         System.out.print("Enter your choice: ");
     }
 
+    /**
+     * Adds an item to the list of inventory items.
+     */
     private static void addItem() {
         System.out.println("Enter item type (Electronics, Grocery, Fragile): ");
         String type = scanner.nextLine();
@@ -101,6 +115,9 @@ public class CLI {
         System.out.println("Item added successfully.");
     }
 
+    /**
+     * Removes an item from the list of inventory items.
+     */
     private static void removeItemByID() {
         System.out.print("Enter item ID to remove: ");
         int id = Integer.parseInt(scanner.nextLine());
@@ -113,6 +130,9 @@ public class CLI {
         }
     }
 
+    /**
+     * Displays the list of inventory items
+     */
     private static void displayItems() {
         if (inventoryItems.isEmpty()) {
             System.out.println("No items in inventory.");
@@ -121,6 +141,9 @@ public class CLI {
         }
     }
 
+    /**
+     * Displays a list of inventory items by category selected by the user
+     */
     private static void categorizeItems() {
         System.out.print("Enter category to filter by: ");
         String category = scanner.nextLine();
@@ -132,18 +155,30 @@ public class CLI {
         }
     }
 
+    /**
+     * Creates an order, calculates order total and processes payment
+     */
     private static void placeOrder() {
         ordersManager.placeOrder(inventoryItems.getItems());
     }
 
+    /**
+     * Displays a list of all orders placed
+     */
     private static void displayOrders() {
         ordersManager.displayOrders();
     }
 
+    /**
+     * Saves the inventory to the inventory.txt file.
+     */
     private static void saveInventory() {
         inventoryItems.saveInventory("inventory.txt");
     }
 
+    /**
+     * Loads the inventory from the inventory.txt file.
+     */
     private static void loadInventory() {
         inventoryItems.loadInventory("inventory.txt");
     }

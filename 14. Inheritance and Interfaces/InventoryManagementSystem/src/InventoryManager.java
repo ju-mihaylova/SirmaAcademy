@@ -2,36 +2,72 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The InventoryManager class implements methods relating to managing the inventory such as adding, removing and displaying items, saving and loading the inventory.
+ */
 public class InventoryManager {
 
     private List<InventoryItem> inventoryItems;
 
+    /**
+     * Constructor for creating a list of inventory items.
+     */
     public InventoryManager() {
         inventoryItems = new ArrayList<>();
     }
 
+    /**
+     * Adds an item to the list of inventory items.
+     *
+     * @param item The item to add to the list.
+     */
     public void addItem(InventoryItem item) {
         inventoryItems.add(item);
     }
 
+    /**
+     * Removes an item from the list of inventory items.
+     *
+     * @param itemId The id of the item to remove from the list.
+     *
+     * @return True if the item has been removed, false otherwise.
+     */
     public boolean removeItem(int itemId) {
         return inventoryItems.removeIf(item -> item.getItemId() == itemId);
     }
 
+    /**
+     * Displays all items in the inventory in a formatted string.
+     */
     public void displayItems() {
         for(InventoryItem item : inventoryItems) {
             System.out.println(item.getItemDetails());
         }
     }
 
+    /**
+     * Checks if the list of inventory items is empty.
+     *
+     * @return True if the list is empty, false otherwise.
+     */
     public boolean isEmpty() {
         return inventoryItems.isEmpty();
     }
 
+    /**
+     * Gets the list of inventory items.
+     *
+     * @return The list of inventory items.
+     */
     public List<InventoryItem> getItems() {
         return inventoryItems;
     }
 
+    /**
+     * Saves the inventory to a specified .txt file.
+     *
+     * @param filename The name of the file to which the inventory is saved.
+     */
     public void saveInventory(String filename) {
 
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
@@ -46,6 +82,11 @@ public class InventoryManager {
         }
     }
 
+    /**
+     * Loads the inventory from a specified .txt file.
+     *
+     * @param filename The name of the file from which the inventory is loaded.
+     */
     public void loadInventory(String filename) {
 
         try(BufferedReader reader = new BufferedReader(new FileReader(filename))) {
