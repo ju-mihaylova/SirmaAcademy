@@ -5,6 +5,10 @@ public class GroceryItem extends InventoryItem {
         super(name, category, price, false, true, quantity);
         this.freshnessCoefficient = freshnessCoefficient;
     }
+    public GroceryItem(String name, String category, double price, int itemId, double quantity, double freshnessCoefficient) {
+        super(name, category, price, false, true, itemId, quantity);
+        this.freshnessCoefficient = freshnessCoefficient;
+    }
 
     public double getFreshnessCoefficient() {
         return freshnessCoefficient;
@@ -18,6 +22,6 @@ public class GroceryItem extends InventoryItem {
 
     @Override
     public String getItemDetails() {
-        return super.getItemDetails() + ", Perishability Degree: " + getPerishabilityDegree() + " Freshness Coefficient " + getFreshnessCoefficient();
+        return super.getItemDetails() + " | " + freshnessCoefficient;
     }
 }

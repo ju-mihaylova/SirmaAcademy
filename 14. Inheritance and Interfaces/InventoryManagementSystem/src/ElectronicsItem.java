@@ -11,6 +11,12 @@ public class ElectronicsItem extends InventoryItem {
         this.addedDate = LocalDate.now();
     }
 
+    public ElectronicsItem(String name, String category, double price, int itemId, double quantity, int guaranteePeriod) {
+        super(name, category, price, true, false, itemId, quantity);
+        this.guaranteePeriod = guaranteePeriod;
+        this.addedDate = LocalDate.now();
+    }
+
     public int getGuaranteePeriod() {
         return guaranteePeriod;
     }
@@ -34,6 +40,6 @@ public class ElectronicsItem extends InventoryItem {
 
     @Override
     public String getItemDetails() {
-        return super.getItemDetails() + ", Guarantee Period: " + guaranteePeriod + " months";
+        return super.getItemDetails() + " | " + guaranteePeriod;
     }
 }

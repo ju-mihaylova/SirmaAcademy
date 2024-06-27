@@ -23,7 +23,8 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
 
     @Override
     public String getItemDetails() {
-        return "Name: " + name + ", Category: " + category + ", Price: " + price;
+        return name + " | " + category + " | " + price + " | " + breakable + " | " +
+                perishable + " | " + perishabilityDegree;
     }
 
     @Override
@@ -86,7 +87,6 @@ public abstract class AbstractItem implements Item, Categorizable, Breakable, Pe
 
     protected abstract void expireItem();
 
-    // Getter and setter for perishability degree
     @Override
     public double getPerishabilityDegree() {
         return perishabilityDegree;

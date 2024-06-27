@@ -1,4 +1,4 @@
-public class InventoryItem extends AbstractItem {
+public class InventoryItem extends AbstractItem implements Cloneable {
     private static int idCounter = 0;
     private final int itemId;
     private double quantity;
@@ -6,6 +6,15 @@ public class InventoryItem extends AbstractItem {
         super(name, category, price, breakable, perishable);
         this.quantity = quantity;
         this.itemId = ++idCounter;
+    }
+
+    public InventoryItem(String name, String category, double price, boolean breakable, boolean perishable, int itemId, double quantity) {
+        super(name, category, price, breakable, perishable);
+        this.quantity = quantity;
+        this.itemId = itemId;
+        if (itemId > idCounter) {
+            idCounter = itemId;
+        }
     }
 
     public int getItemId() {
@@ -34,6 +43,15 @@ public class InventoryItem extends AbstractItem {
 
     @Override
     public String getItemDetails() {
-        return super.getItemDetails() + ", ID: " + itemId + ", Quantity: " + quantity;
+        return super.getItemDetails() + " | " + itemId + " | " + quantity;
+    }
+
+    @Override
+    public InventoryItem clone() {
+        try {
+            return (InventoryItem) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError("Clone not supported.");
+        }
     }
 }

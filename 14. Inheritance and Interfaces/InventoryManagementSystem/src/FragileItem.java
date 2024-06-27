@@ -6,6 +6,10 @@ public class FragileItem extends InventoryItem {
         super(name, category, price, true, false, quantity);
         this.weight = weight;
     }
+    public FragileItem(String name, String category, double price, int itemId, double quantity, double weight) {
+        super(name, category, price, true, false, itemId, quantity);
+        this.weight = weight;
+    }
 
     public double getWeight() {
         return weight;
@@ -28,6 +32,6 @@ public class FragileItem extends InventoryItem {
 
     @Override
     public String getItemDetails() {
-        return super.getItemDetails() + ", Weight: " + weight + " kg";
+        return super.getItemDetails() + " | " + weight;
     }
 }
