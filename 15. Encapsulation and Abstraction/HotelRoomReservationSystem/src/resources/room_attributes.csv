@@ -1,0 +1,5 @@
+type, amenities, max_occupancy
+DELUXE,TV|AirConditioner|Wi-Fi,2+1
+SUITE,TV|AirConditioner|Wi-Fi|Minibar,3
+SINGLE,TV|AirConditioner,1
+DOUBLE,TV|AirConditioner,2

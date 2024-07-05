@@ -1,0 +1,5 @@
+roomNumber,type,pricePerNight,cancellationFee
+101,DELUXE,200,50
+102,SUITE,300,75
+201,SINGLE,100,25
+202,DOUBLE,150,40
